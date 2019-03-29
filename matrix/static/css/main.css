@@ -1,0 +1,202 @@
+/*
+*   Author: Yash Ballani
+*   Website: https://yashballani.com
+*   Â© Yash Ballani 2016.
+*/
+
+/* Common */
+.color-white {
+    color: #ffffff;
+}
+
+.website-page-header > h1 {
+    margin-bottom: 5px;
+    border-left: 3px solid #860038;
+    padding-left: 5px;
+}
+
+.website-page-sub-header > p {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.breadcrumbs {
+    padding: 0;
+    color: #909090;
+    margin-bottom: 20px;
+}
+
+.breadcrumbs > li {
+    display: inline-block;
+    font-size: 12px;
+    list-style: none;
+    margin-left: 3px;
+}
+
+.breadcrumbs > li:after {
+    content: ' > ';
+}
+
+.breadcrumbs > li:last-child:after {
+    content: '';
+    margin-left: 0;
+}
+
+.breadcrumbs > li > a,
+.breadcrumbs > li > a:hover,
+.breadcrumbs > li > a:visited,
+.breadcrumbs > li > a:active {
+    text-decoration: none;
+    color: #909090;
+}
+
+.breadcrumbs > li > a > span {
+    margin-right: 3px;
+}
+
+@media screen and (max-width: 565px) {
+    .website-page-header > h1 {
+        margin-bottom: 20px;
+    }
+
+    .breadcrumbs {
+        display: none;
+    }
+}
+
+.transparent-header {
+    background: rgba(0, 0, 0, .3) !important;
+    transition: all 0.2s ease;
+    border-bottom: 0 !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+/*
+*
+* Navigation Bar
+*
+*/
+.navbar-fixed-top {
+    background-color: #860038;
+    border: 0;
+    -webkit-box-shadow: 0 5px 10px #343943;
+    -moz-box-shadow: 0 5px 10px #343943;
+    box-shadow: 0 5px 10px #343943;
+    font-size: 18px;
+    transition: all 0.2s ease;
+}
+
+.navbar-brand {
+    color: #FFFFFF !important;
+}
+
+.navbar-collapse {
+    border-color: #860038 !important;
+}
+
+.navbar-collapse > ul > li > a,
+.navbar-collapse > ul > li > a:visited,
+.navbar-collapse > ul > li > a:hover,
+.navbar-collapse > ul > li > a:active {
+    color: #ffffff !important;
+}
+
+.navbar-toggle:hover,
+.navbar-toggle:focus {
+    background-color: transparent !important;
+}
+
+.navbar-toggle > .icon-bar {
+    background-color: #FFFFFF !important;
+}
+
+/*
+*
+*   Footer
+*
+*/
+
+.main-footer {
+    box-shadow: 0 -5px 10px #343943;
+    background-color: #343943;
+    border-top: 1px solid #860038;
+    padding: 30px 0;
+}
+
+.main-footer > .row > .copyrights > p {
+    color: #FEFEFE;
+    margin: 40px 0 10px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.main-footer > .row > .social-links {
+    text-align: center;
+}
+
+.main-footer > .row > .social-links > h3 {
+    margin: 0 0 10px;
+    color: #FFFFFF;
+}
+
+.main-footer > .row > .social-links > hr {
+    width: 10%;
+    margin: 0 auto 15px;
+    display: block;
+    text-align: center;
+    border-color: #860038;
+}
+
+.main-footer > .row > .social-links > a,
+.main-footer > .row > .social-links > a:visited,
+.main-footer > .row > .social-links > a:hover,
+.main-footer > .row > .social-links > a:active {
+    text-decoration: none;
+}
+
+.main-footer > .row > .social-links > a > span > i.facebook {
+    color: #3b5998;
+}
+
+.main-footer > .row > .social-links > a > span > i.google {
+    color: #dd4b39;
+}
+
+.main-footer > .row > .social-links > a > span > i.twitter {
+    color: #55acee;
+}
+
+.main-footer > .row > .social-links > a > span > i.github {
+    color: #000000;
+}
+
+.main-footer > .row > .social-links > a > span > i.instagram {
+    color: #125688;
+}
+
+.main-footer > .row > .social-links > a > span > i:last-child {
+    color: #FFFFFF;
+}
+
+@media screen and (max-width: 768px) {
+
+    .main-footer > .row > .copyrights > p {
+        margin: 10px 0;
+    }
+
+    .main-footer > .row > .social-links {
+        margin-top: 15px;
+    }
+}
+
+/*
+*   Codes
+*/
+code {
+    background-color: #f2f4f6;
+    border-radius: 3px;
+    padding: 10px 15px;
+}

@@ -1,0 +1,355 @@
+/*
+*
+*   Common CSS for website and admin
+*
+*/
+
+/*
+*   Body and Header Tags
+*/
+body {
+    font-family: 'Raleway', sans-serif;
+    background-color: #fff;
+}
+
+h1 {
+    font-size: 45px;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 35px;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 565px) {
+    h1 {
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    h2 {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    h3 {
+        font-size: 16px;
+        font-weight: bold;
+    }
+}
+
+.no-top-margin {
+    margin-top: 0 !important;
+}
+
+.top-margin-10 {
+    margin-top: 10px !important;
+}
+
+hr.common {
+    color: #E4E4E4;
+    display: block;
+}
+
+hr.small-underline {
+    display: block;
+    width: 100px;
+    margin: 0 auto 30px;
+    color: #E4E4E4;
+}
+
+.out-of-red,
+.out-of-red:visited,
+.out-of-red:hover,
+.out-of-red:active {
+    color: #860038;
+    text-decoration: none;
+}
+
+.out-of-green,
+.out-of-green:visited,
+.out-of-green:hover,
+.out-of-green:active {
+    color: #860038;
+    text-decoration: none;
+}
+
+.empty-gap {
+    height: 50px;
+}
+
+.empty-section {
+    height: 100vh;
+}
+
+.img-width-match-parent {
+    width: 100%;
+}
+
+.error-page-container {
+    font-size: 18px;
+    line-height: 32px;
+    margin: 0 0 15px;
+}
+
+.mobile-tablet-only,
+.mobile-only,
+.tablet-only {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .tablet-hidden {
+        display: none;
+    }
+
+    .mobile-tablet-only {
+        display: block;
+    }
+
+    .tablet-only {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 565px) {
+    .mobile-hidden,
+    .tablet-only {
+        display: none;
+    }
+
+    .mobile-only {
+        display: block;
+    }
+}
+
+.padding-0 {
+    padding: 0;
+}
+
+@media screen and (max-width: 565px) {
+    .side-margin-15 {
+        margin: 0 15px;
+    }
+}
+
+.margin-bottom-10 {
+    margin: 0 0 10px;
+}
+
+.margin-bottom-20 {
+    margin: 0 0 20px;
+}
+
+.footer-nav {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.footer-nav > li {
+    list-style: none;
+    display: inline-block;
+    padding: 0 15px 0 0;
+    margin: 0 0 10px;
+    font-size: 16px;
+}
+
+.footer-nav > li:last-child {
+    padding: 0;
+}
+
+.footer-nav > li > a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/*
+*   Header
+*/
+.navbar-brand > img {
+    width: 200px;
+}
+
+/*
+*   Text and alignments
+*/
+.align-left {
+    text-align: left;
+}
+
+.align-right {
+    text-align: right;
+}
+
+/*
+*   Inputs and Textarea
+*/
+fieldset {
+    position: relative;
+}
+
+fieldset > label {
+    position: absolute;
+    top: 20px;
+    left: 15px;
+    color: #909090;
+    transform: translate3d(0, 0, 0);
+    transition: all 0.2s ease;
+}
+
+fieldset > input,
+fieldset > textarea {
+    display: block;
+    width: 100%;
+    transition: all 0.2s ease;
+    resize: none;
+    padding: 20px 15px;
+    margin: 0 auto 15px;
+    border: 0;
+    border-bottom: 1px solid #E4E4E4;
+    border-radius: 3px;
+    outline: none;
+}
+
+fieldset > textarea {
+    min-height: 150px;
+}
+
+fieldset > input:focus + label,
+fieldset > input[data-empty="false"] + label,
+fieldset > textarea:focus + label,
+fieldset > textarea:focus + grammarly-btn + label,
+fieldset > textarea[data-empty="false"] + label,
+fieldset > textarea[data-empty="false"] + grammarly-btn + label {
+    top: 5px;
+    font-size: 12px;
+    color: #860038;
+    transition: top 0.2s ease;
+}
+
+fieldset > select {
+    width: 100%;
+    padding: 15px 20px;
+    margin: 0 0 15px;
+    outline: none;
+}
+
+fieldset > label.normal {
+    position: relative;
+    top: 0;
+    left: 15px;
+}
+
+fieldset.width-50 {
+    display: inline-block;
+    width: 50%;
+}
+
+fieldset.width-100 {
+    display: block;
+    width: 100%;
+}
+
+fieldset.width-50 > label {
+    position: relative;
+    top: 0;
+    left: 0;
+    padding: 15px 20px;
+    margin: 0;
+}
+
+fieldset > input[type=checkbox]:focus + label,
+fieldset > input[type=checkbox][data-empty="false"] + label {
+    top: 0;
+    left: 0;
+    font-size: 14px;
+    color: #909090;
+}
+
+fieldset > input[type=checkbox] {
+    display: inline-block;
+    width: initial;
+}
+
+code {
+    display: block;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+/*
+*   Building blocks
+*/
+.page-header {
+    border-left: 3px solid #860038;
+    padding-left: 15px;
+    margin-bottom: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+/*
+*   Cards
+*/
+.card {
+    border: 1px solid #cdcdcd;
+    border-radius: 3px;
+    box-shadow: 0 3px 5px rgba(4, 4, 4, .5);
+    padding: 10px 15px;
+    margin-bottom: 15px;
+}
+
+.card-header {
+    background-color: #fff;
+    padding: 0;
+    border-bottom: 0;
+}
+
+.card-header > h1,
+.card-header > h2,
+.card-header > h3 {
+    display: block;
+    font-size: 18px !important;
+    font-weight: bold;
+    margin: 0;
+    padding: 10px 15px;
+    border-left: 3px solid #860038;
+}
+
+.card-footer {
+    background-color: #fff;
+    border-top: 0;
+    padding-top: 0;
+}
+
+.card-footer > div > button {
+    font-weight: bold;
+    border-radius: 3px;
+    background-color: #860038;
+    color: #fff;
+    padding: 10px 15px;
+    border: 0;
+}
+
+.card-footer > div > button.clear {
+    color: #860038;
+    background-color: #f2f4f6;
+    margin-right: 10px;
+}
+
+.card-footer > div > button:hover {
+    box-shadow: 0 3px 5px rgba(4, 4, 4, .5);
+}
+
+.card-footer > div > button[disabled="disabled"] {
+    background-color: #990038;
+}

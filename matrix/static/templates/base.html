@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en-US"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en-US"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en-US"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en-US"><!--<![endif]-->
+<head>
+    <!-- Meta content -->
+    {% block meta_block %}
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <!-- Title block -->
+        <title xmlns="http://www.w3.org/1999/xhtml">{% block title %}{% endblock title %}</title>
+        <!-- index and follow tags -->
+        <meta content="index, follow" name="robots"/>
+        <link rel="canonical" href="{{ request.build_absolute_uri }}"/>
+
+        <!-- Place favicon.ico and apple-touch-icon.png -->
+        <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/favicon.png') }}">
+        <link rel='shortcut icon' href="{{ url_for('static', filename='images/favicon.png') }}" type='image/x-icon'/>
+    {% endblock meta_block %}
+
+    <!-- CSS block -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/raleway.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/fontawesome.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/common.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+
+    <!-- Base js -->
+    {% block base_js %}
+
+    {% endblock base_js %}
+</head>
+
+<body>
+{% block header %}
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/"><img src="{{ url_for('static', filename='images/logo.png') }}" alt="TLTC"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="mr-auto"></div>
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contributors/">Contributors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about/">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endblock header %}
+
+{% block business_area %}
+    <pre>
+        <h2> Launching Soon!</h2>
+    </pre>
+{% endblock business_area %}
+
+<!-- Footer -->
+<footer class="main-footer container-fluid">
+    <div class="row">
+    <!-- JavaScripts -->
+    <div class="scripts">
+        <script src="{{ url_for('static', filename='js/jquery-3.3.1.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/common.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    </div>
+    {% block footer %}
+        <div class="col-md-4 col-xs-12">
+        </div>
+        <div class="col-md-4 col-xs-12 copyrights">
+            <ul class="footer-nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="/contributors/">Contributors</a></li>
+                <li><a href="/about/">About</a></li>
+            </ul>
+            <p>&copy 2019 Yash Ballani. All Rights Reserved</p>
+        </div>
+        <div class="col-md-4 col-xs-12 social-links">
+            <h3>Connect</h3>
+            <hr>
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/yash.ballani" rel="nofollow">
+                <span class="fa-stack fa-2x">
+                    <i class="fa fa-circle fa-stack-2x facebook"></i>
+                    <i class="fab fa-facebook fa-stack-1x" aria-hidden="true"></i>
+                </span>
+            </a>
+            <!-- Google+-->
+            <a href="https://plus.google.com/+YashBallani94" rel="nofollow">
+                <span class="fa-stack fa-2x">
+                    <i class="fa fa-circle fa-stack-2x google"></i>
+                    <i class="fab fa-google-plus fa-stack-1x" aria-hidden="true"></i>
+                </span>
+            </a>
+            <!-- Twitter -->
+            <a href="https://twitter.com/yash072" rel="nofollow">
+                <span class="fa-stack fa-2x">
+                    <i class="fa fa-circle fa-stack-2x twitter"></i>
+                    <i class="fab fa-twitter fa-stack-1x" aria-hidden="true"></i>
+                </span>
+            </a>
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/yash-ballani-00456991/" rel="nofollow">
+                <span class="fa-stack fa-2x">
+                    <i class="fa fa-circle fa-stack-2x linkedin"></i>
+                    <i class="fab fa-linkedin fa-stack-1x" aria-hidden="true"></i>
+                </span>
+            </a>
+            <!-- Github -->
+            <a href="https://github.com/immortalyash" rel="nofollow">
+                <span class="fa-stack fa-2x">
+                    <i class="fa fa-circle fa-stack-2x github"></i>
+                    <i class="fab fa-github-alt fa-stack-1x" aria-hidden="true"></i>
+                </span>
+            </a>
+        </div>
+    {% endblock footer %}
+    </div>
+</footer>
+</body>
+</html>

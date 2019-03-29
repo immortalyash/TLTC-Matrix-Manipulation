@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+<!-- Page title -->
+{% block title %}TLTC - Matrix Manipulation Project{% endblock title %}
+
+{% block business_area %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 empty-gap"></div>
+            <div class="col-12 offset-sm-2 col-sm-10 offset-md-3 col-md-6">
+                <h1 class="page-header">TLTC - Matrix Manipulation</h1>
+            </div>
+            <!-- Examples -->
+            <div class="col-xs-12 col-sm-10 offset-sm-2 col-md-6 offset-md-3">
+                <h2>Example Section</h2>
+                <!-- Addition and Subtraction example -->
+                <div class="example-section">
+                    <p><b>Example 1 - Addition or Subtraction</b></p>
+                    <code>
+                        <pre>eg. <b>Matrix A:</b>  |1  2|      <b>Input:</b> [1, 2, 4, 3]             <b>Matrix B:</b>   |2  4|          <b>Input:</b> [2, 4, 3, 1]
+               |4  3|                                                  |3  1|
+
+<b><u>Matrix A details:</u></b>                                            <b><u>Matrix B details:</u></b>
+<b>Row:</b> 2     <b>Columns:</b> 2                                        <b>Row:</b> 2     <b>Columns:</b> 2
+
+<b><u>Results:</u></b>
+<b>Addition:</b>    |3  6|                                          <b>Subtraction:</b>    |-1  -2|
+             |7  4|                                                          |1    2|</pre>
+                    </code>
+                    <p><b>**Note:</b> The rows and columns of Matrix A should be same for Matrix B.</p>
+                </div>
+                <!-- Multiplication -->
+                <div class="example-section">
+                    <p><b>Example 2 - Multiplication</b></p>
+                    <code>
+                        <pre>eg. <b>Matrix A:</b>  |1  2|      <b>Input:</b> [1, 2, 4, 3]             <b>Matrix B:</b>   |2|          <b>Input:</b> [2, 3]
+               |4  3|                                                  |3|
+
+<b><u>Matrix A details:</u></b>                                            <b><u>Matrix B details:</u></b>
+<b>Row:</b> 2     <b>Columns:</b> 2                                        <b>Row:</b> 2     <b>Columns:</b> 2
+
+<b><u>Results:</u></b>
+<b>Multiplication:</b>    |3  6|
+                   |7  4|</pre>
+                    </code>
+                    <p><b>**Note:</b> The rows and columns of Matrix A should be same for Matrix B.</p>
+                </div>
+                <!-- Transpose -->
+                <div class="example-section">
+                    <p><b>Example 3 - Transpose</b></p>
+                    <code>
+                        <pre>eg. <b>Matrix A:</b>  |1  2|      <b>Input:</b> [1, 2, 4, 3]             <b>Matrix B:</b>   |2  4|          <b>Input:</b> [2, 4, 3, 1]
+               |4  3|                                                  |3  1|
+
+<b><u>Matrix A details:</u></b>
+<b>Row:</b> 2     <b>Columns:</b> 2
+
+<b><u>Results:</u></b>
+<b>Transpose:</b>    |3  6|
+              |7  4|</pre>
+                    </code>
+                </div>
+            </div>
+            <div class="col-12 empty-gap"></div>
+        </div>
+        <div class="row">
+            <!-- Calculator -->
+            <div class="col-xs-12 col-sm-10 offset-sm-2 col-md-6 offset-md-3 card side-margin-15">
+                <div class="card-header">
+                    <h2>Calculator</h2>
+                </div>
+                <div class="card-body">
+                    <!-- Select Operator -->
+                    <div class="col-12">
+                        <label>Select operation:</label>
+                        <input type="radio" name="operator" value="ADD" /> Addition
+                        <input type="radio" name="operator" value="SUB" /> Subtraction
+                        <input type="radio" name="operator" value="MUL" /> Multiplication
+                        <input type="radio" name="operator" value="TRA" /> Transpose
+                    </div>
+                    <!-- Input Matrix A -->
+                    <fieldset>
+                        <input type="text" name="matrix-a" value="" />
+                        <label>Matrix A: [1, 2, 3, 4]</label>
+                    </fieldset>
+                    <!-- Input Matrix A parameters -->
+                    <fieldset>
+                        <input type="text" name="matrix-a-params" value="" />
+                        <label>Matrix A: (Rows, Columns)</label>
+                    </fieldset>
+                    <!-- Input Matrix B -->
+                    <fieldset class="hidden">
+                        <input type="text" name="matrix-b" value="" />
+                        <label>Matrix B: [1, 2, 3, 4]</label>
+                    </fieldset>
+                    <!-- Input Matrix B parameters -->
+                    <fieldset class="hidden">
+                        <input type="text" name="matrix-b-params" value="" />
+                        <label>Matrix B: (Rows, Columns)</label>
+                    </fieldset>
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                </div>
+                <div class="card-footer">
+                    <div class="align-right">
+                        <button class="card-button clear"> Clear</button>
+                        <button class="card-button" disabled="disabled"> Calculate</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 empty-gap"></div>
+        </div>
+    </div>
+{% endblock business_area %}
