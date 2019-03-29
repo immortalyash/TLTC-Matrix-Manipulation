@@ -1,13 +1,13 @@
 import copy
-import json
 
 from flask import Flask
+from flask import jsonify
 from flask import render_template
 from flask import request
 
 from flask_wtf.csrf import CSRFProtect
 
-from matrix.constants.constants import GLOBAL_API_RESPONSE, OPERATORS
+from matrix.constants.constants import GLOBAL_API_RESPONSE
 from matrix.manager.form_manager import OperationForm
 from matrix.manager.matrix_manager import MatrixManager
 
@@ -73,9 +73,7 @@ def operate_matrix():
         result['data'] = form.errors
         result['message'] = "Validation Errors"
 
-        return result
-
-    return result
+    return jsonify(result)
 
 
 @app.route('/contributors/')
