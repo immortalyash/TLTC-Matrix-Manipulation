@@ -6,6 +6,11 @@ GLOBAL_API_RESPONSE = {
     "message": ""
 }
 
-OPERATORS = ["ADD", "SUB", "MUL", "TRA"]
+OPERATORS = [
+    ("ADD", "ADD"),
+    ("SUB", "SUB"),
+    ("MUL", "MUL"),
+    ("TRA", "TRA")
+]
 
-
+OPERATORS_BOTH_MATRIX_REQUIREMENT = ["ADD", "SUB", "MUL"]
