@@ -131,6 +131,18 @@ class OperationForm(Form):
                 if not self.matrix_2:
                     message = field.gettext("matrix_2 is required for selected operation.")
 
+                # Check for rows and columns size requirement depending on operation.
+                if field.data == "MUL":
+                    # Check if matrix 1 column size corresponds to matrix 2 row size
+                    if self.matrix_1_param.data and self.matrix_2_param.data:
+                        if self.matrix_1_param.data[1] != self.matrix_2_param.data[0]:
+                            message = field.gettext("matrix 1 column size doesn't match with matrix 2 row size.")
+                else:
+                    # Check if size of both matrix is same
+                    if self.matrix_1_param.data and self.matrix_2_param.data:
+                        if self.matrix_1_param.data != self.matrix_2_param.data:
+                            message = field.gettext("matrix 1 and matrix 2 rows and columns size should be same.")
+
         # Raise error if message available
         if message:
             raise ValidationError(message)
