@@ -1,6 +1,10 @@
 Getting Started
 =
 
+## For Docker
+### TODO: add documentation
+
+## For Linux (Debian based) only 
 ### Install Dependencies
 Core dependencies
 ```
