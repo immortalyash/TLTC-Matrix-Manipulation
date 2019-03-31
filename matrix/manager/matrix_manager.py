@@ -44,7 +44,7 @@ class MatrixManager(object):
         :return: List[List[int]]
         """
         # Check Matrix 2 exist
-        if not self._get_matrix_2():
+        if self._get_matrix_2() is None:
             return False
 
         # Perform required operation
@@ -56,7 +56,7 @@ class MatrixManager(object):
         :return: List[List[int]]
         """
         # Check Matrix 2 exist
-        if not self._get_matrix_2():
+        if self._get_matrix_2() is None:
             return False
 
         # Perform required operation
@@ -68,14 +68,14 @@ class MatrixManager(object):
         :return: List[List[int]]
         """
         # Check Matrix 2 exist
-        if not self._get_matrix_2():
+        if self._get_matrix_2() is None:
             return False
         else:
             # Check for Matrix_1(rows, columns) with Matrix_2(columns, rows)
-            matrix_1_shape = self._get_matrix_1().shape()
-            matrix_2_shape = self._get_matrix_2().shape()
+            matrix_1_shape = self._get_matrix_1().shape
+            matrix_2_shape = self._get_matrix_2().shape
 
-            if matrix_1_shape[0] != matrix_2_shape[1] or matrix_1_shape[1] != matrix_2_shape[0]:
+            if matrix_1_shape[1] != matrix_2_shape[0]:
                 return False
 
         # Perform required operation

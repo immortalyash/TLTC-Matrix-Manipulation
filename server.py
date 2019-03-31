@@ -6,6 +6,7 @@ from flask import render_template
 from flask import request
 
 from flask_wtf.csrf import CSRFProtect
+from werkzeug.utils import MultiDict
 
 from matrix.constants.constants import GLOBAL_API_RESPONSE
 from matrix.manager.form_manager import OperationForm
@@ -36,9 +37,56 @@ def operate_matrix():
     Method to handle POST request to handle matrix manipulation
     :return:
     """
+    def _convert_matrix_format(_data):
+        """
+        Method to convert all list data to required form
+        :param _data: dict
+        :return: dict
+        """
+        _result = []
+        _matrix = ["matrix_1", "matrix_1_param", "matrix_2", "matrix_2_param"]
+
+        for _m in _matrix:
+            # Matrix
+            if _data.get(_m):
+                _result += _clean_matrix_data(_data.get(_m), _m)
+
+        # Update data
+        for _res in _result:
+            _data.update({
+                _res[0]: _res[1]
+            })
+
+        # Remove list access
+        for _m in _matrix:
+            if _data.get(_m):
+                del _data[_m]
+
+        return _data
+
+    def _clean_matrix_data(_data, _prefix):
+        """
+        Method to convert matrix data to required form
+        :param _data: List
+        :param _prefix: String
+        :return: List
+        """
+        _result = []
+        _index = 0
+
+        for _d in _data:
+            _key = "%s-%d" % (_prefix, _index)
+            _result.append([_key, _d])
+            _index += 1
+
+        return _result
+
     result = copy.copy(GLOBAL_API_RESPONSE)
     # Fetch form data and convert to dict format
-    data = request.get_data()
+    data = request.get_json()
+    # Convert matrix data
+    data = _convert_matrix_format(data)
+    data = MultiDict(data)
 
     # clean data
     form = OperationForm(data)
@@ -47,6 +95,7 @@ def operate_matrix():
     if form.validate():
         operated_data = None
         operator = form.operator.data
+
         matrix = MatrixManager(form.matrix_1.data, form.matrix_1_param.data,
                                form.matrix_2.data, form.matrix_2_param.data)
 
@@ -61,10 +110,10 @@ def operate_matrix():
             operated_data = matrix.transpose()
 
         # Check if operation successful
-        if operated_data:
+        if operated_data is not None:
             result['success'] = True
             result['data'] = {
-                'result': operated_data
+                'result': str(operated_data)
             }
             result['message'] = "Calculations successful"
         else:
