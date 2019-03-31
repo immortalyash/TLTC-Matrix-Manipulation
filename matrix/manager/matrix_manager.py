@@ -45,10 +45,10 @@ class MatrixManager(object):
         """
         # Check Matrix 2 exist
         if self._get_matrix_2() is None:
-            return False
+            return False, "matrix 2 is required field"
 
         # Perform required operation
-        return self._get_matrix_1() + self._get_matrix_2()
+        return True, self._get_matrix_1() + self._get_matrix_2()
 
     def subtract(self):
         """
@@ -57,10 +57,10 @@ class MatrixManager(object):
         """
         # Check Matrix 2 exist
         if self._get_matrix_2() is None:
-            return False
+            return False, "matrix 2 is required field"
 
         # Perform required operation
-        return self._get_matrix_1() - self._get_matrix_2()
+        return True, self._get_matrix_1() - self._get_matrix_2()
 
     def multiplication(self):
         """
@@ -69,17 +69,17 @@ class MatrixManager(object):
         """
         # Check Matrix 2 exist
         if self._get_matrix_2() is None:
-            return False
+            return False, "matrix 2 is required field"
         else:
             # Check for Matrix_1(rows, columns) with Matrix_2(columns, rows)
             matrix_1_shape = self._get_matrix_1().shape
             matrix_2_shape = self._get_matrix_2().shape
 
             if matrix_1_shape[1] != matrix_2_shape[0]:
-                return False
+                return False, "matrix 1 column size doesn't match with matrix 2 row size."
 
         # Perform required operation
-        return self._get_matrix_1() @ self._get_matrix_2()
+        return True, self._get_matrix_1() @ self._get_matrix_2()
 
     def transpose(self):
         """
@@ -87,4 +87,4 @@ class MatrixManager(object):
         :return: List[List[int]]
         """
         # Perform required operation
-        return self._get_matrix_1().transpose()
+        return True, self._get_matrix_1().transpose()

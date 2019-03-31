@@ -47,7 +47,7 @@ def operate_matrix():
         _matrix = ["matrix_1", "matrix_1_param", "matrix_2", "matrix_2_param"]
 
         for _m in _matrix:
-            # Matrix
+            # Clean matrix data to required form
             if _data.get(_m):
                 _result += _clean_matrix_data(_data.get(_m), _m)
 
@@ -84,15 +84,17 @@ def operate_matrix():
     result = copy.copy(GLOBAL_API_RESPONSE)
     # Fetch form data and convert to dict format
     data = request.get_json()
-    # Convert matrix data
+    # Convert matrix data to required form requirements
     data = _convert_matrix_format(data)
+    # Convert json data to form data requirements (MultiDict)
     data = MultiDict(data)
 
-    # clean data
+    # Parse data via form
     form = OperationForm(data)
 
     # Validate form
     if form.validate():
+        operation_success = False
         operated_data = None
         operator = form.operator.data
 
@@ -101,24 +103,26 @@ def operate_matrix():
 
         # Perform requested operations
         if operator == "ADD":
-            operated_data = matrix.add()
+            operation_success, operated_data = matrix.add()
         elif operator == "SUB":
-            operated_data = matrix.subtract()
+            operation_success, operated_data = matrix.subtract()
         elif operator == "MUL":
-            operated_data = matrix.multiplication()
+            operation_success, operated_data = matrix.multiplication()
         elif operator == "TRA":
-            operated_data = matrix.transpose()
+            operation_success, operated_data = matrix.transpose()
 
         # Check if operation successful
-        if operated_data is not None:
+        if operation_success:
             result['success'] = True
             result['data'] = {
                 'result': str(operated_data)
             }
             result['message'] = "Calculations successful"
         else:
+            # Operation failed
             result['message'] = operated_data
     else:
+        # Handling form errors
         result['data'] = form.errors
         result['message'] = "Validation Errors"
 
