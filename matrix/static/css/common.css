@@ -61,7 +61,9 @@ hr.small-underline {
     display: block;
     width: 100px;
     margin: 0 auto 30px;
-    color: #E4E4E4;
+    color: #860038;
+    border-color: #860038;
+    border-width: 3px;
 }
 
 .out-of-red,
@@ -304,7 +306,7 @@ code {
     border: 1px solid #cdcdcd;
     border-radius: 3px;
     box-shadow: 0 3px 5px rgba(4, 4, 4, .5);
-    padding: 10px 15px;
+    padding-top: 10px;
     margin-bottom: 15px;
 }
 

@@ -4,9 +4,171 @@
 {% block title %}About - Matrix Manipulation Project{% endblock title %}
 
 {% block business_area %}
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <div class="col-12 empty-gap"></div>
+            <div class="col-12">
+                <h1 class="page-header">Problem Statement</h1>
+                <div>
+                    <p>Tutoring center is facing difficulty with helping students. There is one problem that
+                        decelerates their work. Matrix Operations are hard to solve and taking so much time, they
+                        need a program that addresses Matrix Operations quickly. This program will save time for tutors
+                        and students. There are four Matrix Operations need to be in this program. The first is Adding
+                        metrics; the second is Subtracting Matrix, the third is Multiplying by Another Metrics, the
+                        last is Transposing metrics. The program should have an option for the size of the Matrix, 2x2
+                        and 3x3 and 4x4. The program provides four types of Matrix operations for the users. Then the
+                        users can determine the size of their Matrix and type the numbers in the Matrix format. The
+                        user only needs to click the enter button after they enter the numbers, then the calculation
+                        will be processed by the system. After that, the correct solution will be given on the user's
+                        screen.</p>
+                </div>
+            </div>
+            <div class="col-12 empty-gap"></div>
+            <div class="col-12">
+                <h2 class="page-header">Theory</h2>
+                <div>
+                    <p><b>Matrix addition and subtraction:</b></p>
+                    <p>Addition of matrix (sum of a matrix) A + B is the operation of a finding of a matrix C, entry
+                        of which are equal to the sum of all corresponding entry of matrix A and B,
+                        can be defined as:</p>
+                    <p>сij = aij + bij</p>
+                    <p><b>Matrix multiplication:</b></p>
+                    <p>The result of the multiplication of matrices Am×n and Bn×k the matrix Cm×k such that the element
+                        of the matrix C, standing in the i-th row and j-th column (cij), is equal to the sum of products
+                        of elements of the i-th row of the matrix A by the corresponding elements j-th column
+                        of matrix B:</p>
+                    <p>cij = ai1 · b1j + ai2 · b2j + ... + ain · bnj</p>
+                    <p><b>Transpose matrix:</b></p>
+                    <p>Transposing the matrix is an operation on the matrix in which its rows and columns are
+                        swapped:</p>
+                    <p>aT(ij) = a(ji)</p>
+                    <p><b>Objectives:</b></p>
+                    <p>The project name is Matrices Calculator. It must solve Matrix Addition, Subtraction,
+                        Multiplication, and Transpose Matrix.</p>
+                    <p><b>Introduction:</b></p>
+                    <p>In mathematics, a matrix (plural: matrices) is a rectangular array[1] of numbers, symbols, or
+                        expressions, arranged in rows and columns.[2][3] For example, the dimensions of the matrix
+                        below are 2 × 3 (read "two by three"), because there are two rows and three columns:</p>
+                    <p><b>Requirement Definition:</b></p>
+                    <ol>
+                        <li>The website shall allow the user to select the size of the Matrix.</li>
+                        <li>The website shall allow the user to input in NULL matrix.</li>
+                        <li>The website shall allow the user to input the data in the matrix.</li>
+                        <li>The website shall have 2x2, 3x3, and 4x4 Matrix.</li>
+                        <li>The website shall enable the clients to select what type of the Matrix.</li>
+                        <li>The website shall be able to Add Two Matrixes.</li>
+                        <li>The website shall be able to Subtract Two Matrixes.</li>
+                        <li>The website shall be able to Multiple by Another Matrix.</li>
+                        <li>The website shall be able to Transpose Matrix.</li>
+                        <li>The website shall demonstrate the solution after entering the inputs.</li>
+                    </ol>
+                    <p><b>Size:</b></p>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col" style="width:150px;">Name</th>
+                                    <th scope="col" style="width:100px;">Size</th>
+                                    <th scope="col" style="width:150px;">Example</th>
+                                    <th scope="col">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Row vector</td>
+                                    <td>1 x n</td>
+                                    <td>[3   7   2]</td>
+                                    <td><p>A matrix with one row, sometimes used to represent a vector</p></td>
+                                </tr>
+                                <tr>
+                                    <td>Column vector</td>
+                                    <td>n x 1</td>
+                                    <td><pre>|4|
+|1|
+|8|</pre>
+                                    </td>
+                                    <td><p>A matrix with one column, sometimes used to represent a vector</p></td>
+                                </tr>
+                                <tr>
+                                    <td>Square matrix</td>
+                                    <td>n x n</td>
+                                    <td><pre>|9   13   5|
+|1   11   7|
+|2    6   3|
+                                    </pre>
+                                    </td>
+                                    <td><p>A matrix with the same number of rows and columns, sometimes used to represent a
+                                        linear transformation from a vector space to itself, such as reflection, rotation,
+                                        or shearing.</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p><b>Basic operations:</b></p>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Addition</td>
+                                    <td><p>The sum A+B of two m-by-n matrices A and B is calculated entrywise: </br>
+                                        (A + B)i,j = Ai,j + Bi,j, </br>
+                                        where 1 ≤ i ≤ m and 1 ≤ j ≤ n.</p>
+                                    </td>
+                                    <td><pre>|<b>3</b>   8|  +   |<b>4</b>    0|  =  |<b>7</b>    8|
+|4   6|      |1   -9|     |5   -3|
+                                    </pre>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Multiplication</td>
+                                    <td><p>The product cA of a number c (also called a scalar in the parlance of
+                                        abstract algebra) and a matrix A is computed by multiplying every entry of
+                                        A by c: </br>
+                                        (cA)i,j = c · Ai,j.</p>
+                                    </td>
+                                    <td><pre>|<b>1   2   3</b>|  x  |7     <b>8</b>|  =  |58   <b>64</b>|
+|4   5   6|     |9    <b>10</b>|     |       |
+                |11   <b>12</b>|
+                                    </pre>
+                                        <p>= (1, 2, 3) * (8, 10, 12) = 1*8 + 2*10 + 3*12</p>
+                                        <p>= 64</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Transposition</td>
+                                    <td><p>The transpose of an m-by-n matrix A is n-by-n matrix AT (also denoted Atr
+                                        or tA) formed by turning rows into columns and vice versa: </br>
+                                        (AT)i,j = Aj,i.</p>
+                                    </td>
+                                    <td><pre>|<b>6    4   24</b>|<sup>T</sup> =  |<b> 6</b>    1|
+|1   -9    8|     |<b> 4</b>   -9|
+                  |<b>24</b>    9|
+                                    </pre>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Subtraction</td>
+                                    <td><p>A matrix can only be added to (or subtracted from) another matrix if the two
+                                        matrices have the same dimensions.</p>
+                                    </td>
+                                    <td><pre>|<b>3</b>   8|  +   |<b>4</b>    0|  =  |<b>-1</b>    8|
+|4   6|      |1   -9|     | 3   15|
+                                    </pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
             <div class="col-12 empty-gap"></div>
         </div>
     </div>

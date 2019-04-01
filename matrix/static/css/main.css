@@ -123,7 +123,7 @@
     box-shadow: 0 -5px 10px #343943;
     background-color: #343943;
     border-top: 1px solid #860038;
-    padding: 30px 0;
+    padding: 30px;
 }
 
 .main-footer > .row > .copyrights > p {
@@ -161,20 +161,16 @@
     color: #3b5998;
 }
 
-.main-footer > .row > .social-links > a > span > i.google {
-    color: #dd4b39;
-}
-
 .main-footer > .row > .social-links > a > span > i.twitter {
     color: #55acee;
 }
 
-.main-footer > .row > .social-links > a > span > i.github {
-    color: #000000;
+.main-footer > .row > .social-links > a > span > i.linkedin {
+    color: #0077B5;
 }
 
-.main-footer > .row > .social-links > a > span > i.instagram {
-    color: #125688;
+.main-footer > .row > .social-links > a > span > i.github {
+    color: #000000;
 }
 
 .main-footer > .row > .social-links > a > span > i:last-child {
@@ -214,4 +210,54 @@ code {
 
 .error-list {
     margin-bottom: 0;
+}
+
+/*
+*   Profile Card
+*/
+.profile {
+    /*margin: 0 15px 30px;*/
+}
+
+.profile > .card-body > img {
+    width: 100%;
+    border-radius: 100%;
+    margin-bottom: 15px;
+}
+
+
+.profile > .card-body > .fa-user-circle {
+    font-size: 500px;
+}
+
+.profile > .card-body > h2 {
+    text-align: center;
+}
+
+.social-share {
+    text-align: center;
+}
+
+.social-share > a {
+    margin-right: 15px;
+}
+
+.social-share > a:last-child {
+    margin-right: 0;
+}
+
+.social-share > a.facebook {
+    color: #3b5998;
+}
+
+.social-share > a.twitter {
+    color: #55acee;
+}
+
+.social-share > a.linkedin {
+    color: #0077B5;
+}
+
+.social-share > a.github {
+    color: #000;
 }
