@@ -7,7 +7,7 @@ $(document).on("change", "fieldset > input, fieldset > textarea", function (e) {
 
 /**
  * Method to convert error list to DOM Element
- * @param errors
+ * @param errors {Array}
  * @returns {string}
  */
 function errorList(errors) {
@@ -23,7 +23,7 @@ function errorList(errors) {
 
 /**
  * Method to convert ajax output to DOM Element
- * @param result dict
+ * @param result {json}
  * #returns {string}
  */
 function outputSuccess(result) {
