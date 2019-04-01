@@ -54,6 +54,7 @@ class OperationForm(Form):
         if 0 > len(field.data) or len(field.data) > 2:
             message = field.gettext("Two elements required.")
         else:
+            # Check for data types
             if not field.data[0] and not field.data[1]:
                 message = field.gettext("Invalid dataType.")
 
@@ -103,6 +104,7 @@ class OperationForm(Form):
                 if 0 > len(field.data) or len(field.data) > 2:
                     message = field.gettext("Two elements required.")
                 else:
+                    # Check for data types
                     if not field.data[0] and not field.data[1]:
                         message = field.gettext("Invalid dataType.")
 
