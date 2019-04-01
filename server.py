@@ -84,7 +84,6 @@ def operate_matrix():
     result = copy.copy(GLOBAL_API_RESPONSE)
     # Fetch form data and convert to dict format
     data = request.get_json()
-    # import pdb; pdb.set_trace()
     # Convert matrix data to required form requirements
     data = _convert_matrix_format(data)
     # Convert json data to form data requirements (MultiDict)
