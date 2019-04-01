@@ -53,6 +53,10 @@ class OperationForm(Form):
         # Exact two parameters are required
         if 0 > len(field.data) or len(field.data) > 2:
             message = field.gettext("Two elements required.")
+        else:
+            # Check for data types
+            if not field.data[0] and not field.data[1]:
+                message = field.gettext("Invalid dataType.")
 
         # Raise error if message available
         if message:
@@ -99,6 +103,10 @@ class OperationForm(Form):
             if self.matrix_2.data:
                 if 0 > len(field.data) or len(field.data) > 2:
                     message = field.gettext("Two elements required.")
+                else:
+                    # Check for data types
+                    if not field.data[0] and not field.data[1]:
+                        message = field.gettext("Invalid dataType.")
 
             else:
                 # Extra inputs, if matrix 2 not sent

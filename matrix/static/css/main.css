@@ -200,3 +200,18 @@ code {
     border-radius: 3px;
     padding: 10px 15px;
 }
+
+/*
+*   Errors
+*/
+#error-group {
+    background-color: #721c24;
+    color: #fff;
+    border-radius: 3px;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+}
+
+.error-list {
+    margin-bottom: 0;
+}
