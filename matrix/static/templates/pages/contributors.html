@@ -4,10 +4,87 @@
 {% block title %}Contributors - Matrix Manipulation Project{% endblock title %}
 
 {% block business_area %}
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <div class="col-12 empty-gap"></div>
+            <!-- Profiles -->
+            <div class="col-12">
+                <h1 class="page-header">Contributors</h1>
+
+                <!-- Project details -->
+                <div class="col-12 card">
+                    <div class="card-header">
+                        <h2 class="page-header">Project details</h2>
+                    </div>
+                    <div class="card-body">
+                        <p><b>Backend:</b> Python</p>
+                        <p><b>Web Framework:</b> Python Flask</p>
+                        <p><b>Frontend:</b> HTML5 + CSS3 + Bootstrap + Jquery</p>
+                        <p><b>Follow the project on GitHub:</b>
+                            <a href="https://github.com/immortalyash/TLTC-Matrix-Manipulation"
+                               target="_blank">https://github.com/immortalyash/TLTC-Matrix-Manipulation</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
             <div class="col-12 empty-gap"></div>
         </div>
     </div>
+    <div class="container">
+        <div class="row">
+            <!-- Yash Ballani -->
+            <div class="col-12 col-md-6">
+                <div class="card profile">
+                    <div class="card-body">
+                        <img src="{{ url_for('static', filename='images/yash-ballani.jpg') }}">
+                        <h2>Yash Ballani</h2>
+                        <hr class="small-underline">
+                        <div>
+                            <div class="social-share">
+                                <a class="facebook" href="https://www.facebook.com/yash.ballani">
+                                    <i class="fab fa-facebook-square fa-5x"></i>
+                                </a>
+                                <a class="twitter" href="https://twitter.com/yash072">
+                                    <i class="fab fa-twitter-square fa-5x"></i>
+                                </a>
+                                <a class="linkedin" href="https://www.linkedin.com/in/yash-ballani/">
+                                    <i class="fab fa-linkedin fa-5x"></i>
+                                </a>
+                                <a class="github" href="https://github.com/immortalyash">
+                                    <i class="fab fa-github-alt fa-5x"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Jaspreet Singh -->
+            <div class="col-12 col-md-6">
+                <div class="card profile">
+                    <div class="card-body">
+                        <img src="#">
+                        <h2>Jaspreet Singh</h2>
+                        <hr class="small-underline">
+                        <div>
+                            <div class="social-share">
+                                <a class="facebook" href="#">
+                                    <i class="fab fa-facebook-square fa-5x"></i>
+                                </a>
+                                <a class="twitter" href="#">
+                                    <i class="fab fa-twitter-square fa-5x"></i>
+                                </a>
+                                <a class="linkedin" href="#">
+                                    <i class="fab fa-linkedin fa-5x"></i>
+                                </a>
+                                <a class="github" href="#">
+                                    <i class="fab fa-github-alt fa-5x"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 empty-gap"></div>
 {% endblock business_area %}
