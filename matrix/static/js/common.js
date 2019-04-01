@@ -1,11 +1,4 @@
 /**
- * Dismiss Loader
- */
-$(document).on('ready', function () {
-   cssLoader();
-});
-
-/**
  * Adding extra field in input tag for label tag transition
  */
 $(document).on("change", "fieldset > input, fieldset > textarea", function (e) {
@@ -13,137 +6,132 @@ $(document).on("change", "fieldset > input, fieldset > textarea", function (e) {
 });
 
 /**
+ * Method to convert error list to DOM Element
+ * @param errors
+ * @returns {string}
+ */
+function errorList(errors) {
+    var error_list = "<ul class='error-list'>";
+
+    // Attach error to list UI
+    for (var _err in errors) {
+        error_list += "<li>" + errors[_err] + "</li>";
+    }
+    error_list += "</ul>";
+    return error_list;
+}
+
+/**
+ * Method to convert ajax output to DOM Element
+ * @param result dict
+ * #returns {string}
+ */
+function outputSuccess(result) {
+    return "<code><pre>" + result + "</pre></code>";
+}
+
+/**
+ * Method to check if data in list is NaN
+ * @param dataList {Array}
+ * @returns {boolean}
+ */
+function checkData(dataList) {
+    for (var _d in dataList) {
+        if (isNaN(dataList[_d])) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+/**
  * Method to validate context fields
  * @param context Object
  * @param data Object
  * @param validate Object
+ * #returns {boolean, dict}
  */
 function validateFields(context, data, validate) {
     var validation = true;
-    var valid = '1px solid #E4E4E4';
-    var not_valid = '1px solid #F44336';
 
-    // Validate first name
-    if (validate['first_name']) {
-        if ((data.first_name).length < 2) {
-            validation = false;
-            $(context).find('#first-name').css({'border-bottom': not_valid});
-        } else {
-            $(context).find('#first-name').css({'border-bottom': valid});
-        }
-    }
+    // Fetch all keys to validate
+    const _keys = Object.keys(validate);
+    const valid_operations = ["ADD", "SUB", "MUL", "TRA"];
 
-    // Validate last name
-    if (validate['last_name']) {
-        if ((data.last_name).length < 1) {
-            validation = false;
-            $(context).find('#last-name').css({'border-bottom': not_valid});
-        } else {
-            $(context).find('#last-name').css({'border-bottom': valid});
-        }
-    }
+    // Error list
+    var errors = [];
 
-    // Validate DOB
-    if (validate['dob']) {
-        // Validate DOB format
-        if ((data.dob).length === 0 || (data.dob).length === 10) {
-            $(context).find('#dob').css({'border-bottom': valid});
-        } else {
-            validation = false;
-            $(context).find('#dob').css({'border-bottom': not_valid});
-        }
-    }
+    // Validate each fields marked to validate else set them null
+    for (var _k in _keys) {
 
-    // Validate Phone
-    if (validate['phone']) {
-        if ((data.phone).length > 0 && !isNaN(parseFloat(data.phone))) {
-            if ((data.phone).length === 10) {
-                $(context).find('#phone').css({'border-bottom': valid});
-            } else {
-                validation = false;
-                $(context).find('#phone').css({'border-bottom': not_valid});
+        // Check if validation is required
+        if (validate[_keys[_k]]) {
+
+            // Check what data to check
+            if (_keys[_k] === "operator") {
+
+                // Validate operator with valid operations
+                if (!existElement(valid_operations, data[_keys[_k]])) {
+                    errors.push(_keys[_k] + ": Please select a valid operation.");
+                    validation = false;
+                }
+            } else if (_keys[_k] !== "csrf_token") {
+
+                if (data[_keys[_k]] === "") {
+                    errors.push(_keys[_k] + ": This field is required.");
+                    validation = false;
+                } else {
+                    // Check matrix for valid inputs
+                    try {
+                        data[_keys[_k]] = data[_keys[_k]].replace("[", "");
+                        data[_keys[_k]] = data[_keys[_k]].replace("]", "");
+                        data[_keys[_k]] = data[_keys[_k]].split(",").map(Number);
+
+                        // Confirm datatype
+                        if (!checkData(data[_keys[_k]])) {
+                            errors.push(_keys[_k] + ": Invalid dataType.");
+                            validation = false;
+                        }
+
+                        // Check length of parameters for matrix param
+                        if (_keys[_k] === "matrix_1_param" || _keys[_k] === "matrix_2_param") {
+
+                            if (data[_keys[_k]].length !== 2) {
+                                errors.push(_keys[_k] + ": Two elements required.");
+                                validation = false;
+                            }
+                        }
+                    } catch (e) {
+                        // Invalid input data type
+                        errors.push(_keys[_k] + ": Invalid input.");
+                        validation = false;
+                    }
+                }
             }
         } else {
-            $(context).find('#phone').css({'border-bottom': valid});
+
+            // if validation is not required for particular data, set data as null
+            data[_keys[_k]] = null;
         }
     }
 
-    // Validate email
-    if (validate['email']) {
-        var regex_email = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        if (((data.email).length > 4 && (data.email).length < 150) && regex_email.test(data.email)) {
-            $(context).find('#email').css({'border-bottom': valid})
-        } else {
-            validation = false;
-            $(context).find('#email').css({'border-bottom': not_valid});
-        }
-    }
+    // Show/Hide errors if present
+    if (errors.length > 0) {
 
-    // Validate old password
-    if (validate['old_password']) {
-        if ((data.old_password).length < 8) {
-            validation = false;
-            $(context).find('#old-password').css({'border-bottom': not_valid});
-        } else {
-            $(context).find('#old-password').css({'border-bottom': valid});
-        }
-    }
-
-    // Validate password
-    if (validate['password']) {
-        if ((data.password).length > 7 && (data.password).length < 100) {
-            $(context).find('#password').css({'border-bottom': valid});
-        } else {
-            validation = false;
-            $(context).find('#password').css({'border-bottom': not_valid});
-        }
-    }
-
-    // Validate re typed password
-    if (validate['re_password']) {
-        if ((data.re_password).length > 7 && data.password === data.re_password) {
-            $(context).find("#re-password").css({"border-bottom": valid})
-        } else {
-            validation = false;
-            $(context).find('#re-password').css({"border-bottom": not_valid})
-        }
-    }
-
-    // Validate bio
-    if (validate['bio']) {
-        if ((data.bio).length > 0) {
-            if ((data.bio).length < 50 || (data.bio).length > 250) {
-                validation = false;
-                $(context).find('#bio').css({'border-bottom': not_valid});
-            } else {
-                $(context).find('#bio').css({'border-bottom': valid});
-            }
-        }
-    }
-
-    // Validate g-captcha
-    if (validate['g_captcha']) {
-        if (data.g_captcha === "") {
-            validation = false;
-            $(context).find('.g-recaptcha > div').css({'border': not_valid});
-        } else {
-            $(context).find('.g-recaptcha > div').css({'border': valid});
-        }
-    }
-
-    return validation;
-}
-
-/**
- * Show/hide loader
- */
-function cssLoader() {
-    var loader = $('#cssLoader');
-    if (loader.hasClass('hidden')) {
-        loader.removeClass('hidden');
+        // Parse errors list to convert to DOM element.
+        var errorElement = errorList(errors);
+        $(context).find("#error-group")
+            .html(errorElement)
+            .removeClass("hidden");
     } else {
-        loader.addClass('hidden');
+        // remove error list just in-case error list present in html
+        $(context).find("#error-group")
+            .addClass("hidden")
+            .html("");
     }
+
+    return [validation, data];
 }
 
 /**
@@ -175,19 +163,16 @@ function sendAjaxRequest(url, type, data, dataType, successFunction, errorFuncti
     if (errorFunction === null) {
         errorFunction = function (xhr) {
             alert("Oops something seems wrong");
-
-            if (typeof grecaptcha !== 'undefined') {
-                // reset the captcha after use
-                grecaptcha.reset();
-            }
         };
     }
 
     $.ajax({
         url: url,
         type: type,
-        data: data,
+        data: JSON.stringify(data),
         dataType: dataType,
+        contentType: "application/json",
+        processData: false,
         success: successFunction,
         error: errorFunction
     })

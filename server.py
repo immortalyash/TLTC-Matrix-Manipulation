@@ -48,7 +48,7 @@ def operate_matrix():
 
         for _m in _matrix:
             # Clean matrix data to required form
-            if _data.get(_m):
+            if _data and _data.get(_m):
                 _result += _clean_matrix_data(_data.get(_m), _m)
 
         # Update data
@@ -59,7 +59,7 @@ def operate_matrix():
 
         # Remove list access
         for _m in _matrix:
-            if _data.get(_m):
+            if _data and _data.get(_m):
                 del _data[_m]
 
         return _data
@@ -84,6 +84,7 @@ def operate_matrix():
     result = copy.copy(GLOBAL_API_RESPONSE)
     # Fetch form data and convert to dict format
     data = request.get_json()
+    # import pdb; pdb.set_trace()
     # Convert matrix data to required form requirements
     data = _convert_matrix_format(data)
     # Convert json data to form data requirements (MultiDict)

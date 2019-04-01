@@ -70,44 +70,66 @@
                     <h2>Calculator</h2>
                 </div>
                 <div class="card-body">
+                    <!-- Error message -->
+                    <div class="col-12 hidden" id="error-group">
+
+                    </div>
                     <!-- Select Operator -->
                     <div class="col-12">
                         <label>Select operation:</label>
-                        <input type="radio" name="operator" value="ADD" /> Addition
-                        <input type="radio" name="operator" value="SUB" /> Subtraction
-                        <input type="radio" name="operator" value="MUL" /> Multiplication
-                        <input type="radio" name="operator" value="TRA" /> Transpose
+                        <input type="radio" name="operator" value="ADD" class="operator" /> Addition
+                        <input type="radio" name="operator" value="SUB" class="operator" /> Subtraction
+                        <input type="radio" name="operator" value="MUL" class="operator" /> Multiplication
+                        <input type="radio" name="operator" value="TRA" class="operator" /> Transpose
                     </div>
                     <!-- Input Matrix A -->
                     <fieldset>
-                        <input type="text" name="matrix-a" value="" />
+                        <input type="text" name="matrix-a" value="" id="matrix-a" />
                         <label>Matrix A: [1, 2, 3, 4]</label>
                     </fieldset>
                     <!-- Input Matrix A parameters -->
                     <fieldset>
-                        <input type="text" name="matrix-a-params" value="" />
-                        <label>Matrix A: (Rows, Columns)</label>
+                        <input type="text" name="matrix-a-params" value="" id="matrix-a-params" />
+                        <label>Matrix A Param: (Rows, Columns)</label>
                     </fieldset>
                     <!-- Input Matrix B -->
-                    <fieldset class="hidden">
-                        <input type="text" name="matrix-b" value="" />
+                    <fieldset class="hidden hidden-group">
+                        <input type="text" name="matrix-b" value="" id="matrix-b" />
                         <label>Matrix B: [1, 2, 3, 4]</label>
                     </fieldset>
                     <!-- Input Matrix B parameters -->
-                    <fieldset class="hidden">
-                        <input type="text" name="matrix-b-params" value="" />
-                        <label>Matrix B: (Rows, Columns)</label>
+                    <fieldset class="hidden hidden-group">
+                        <input type="text" name="matrix-b-params" value="" id="matrix-b-params" />
+                        <label>Matrix B Param: (Rows, Columns)</label>
                     </fieldset>
                     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                 </div>
                 <div class="card-footer">
                     <div class="align-right">
-                        <button class="card-button clear"> Clear</button>
-                        <button class="card-button" disabled="disabled"> Calculate</button>
+                        <button class="card-button clear"
+                                onclick="clearFields($(this).parent().parent().parent())"> Clear</button>
+                        <button class="card-button"
+                                onclick="calculate($(this).parent().parent().parent())"> Calculate</button>
                     </div>
+                </div>
+            </div>
+            <div class="col-12 empty-gap"></div>
+            <!-- Output Card -->
+            <div class="col-xs-12 col-sm-10 offset-sm-2 col-md-6 offset-md-3 card side-margin-15">
+                <div class="card-header">
+                    <h2>Output</h2>
+                </div>
+                <div class="card-body output-body">
+
                 </div>
             </div>
             <div class="col-12 empty-gap"></div>
         </div>
     </div>
 {% endblock business_area %}
+
+
+{% block js %}
+    <script src="{{ url_for('static', filename='js/common.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock js %}
