@@ -104,13 +104,13 @@
     color: #ffffff !important;
 }
 
-.navbar-toggle:hover,
-.navbar-toggle:focus {
-    background-color: transparent !important;
+.navbar-toggler {
+    border-color: #fff;
 }
 
-.navbar-toggle > .icon-bar {
-    background-color: #FFFFFF !important;
+.navbar-toggler > .navbar-toggler-icon {
+    color: #fff;
+    padding: 5px 0;
 }
 
 /*
@@ -215,12 +215,13 @@ code {
 /*
 *   Profile Card
 */
-.profile {
-    /*margin: 0 15px 30px;*/
+
+.profile-img {
+    text-align: center;
 }
 
-.profile > .card-body > img {
-    width: 100%;
+.profile-img > img {
+    width: 60%;
     border-radius: 100%;
     margin-bottom: 15px;
 }
@@ -238,8 +239,12 @@ code {
     text-align: center;
 }
 
-.social-share > a {
+.social-share > a,
+.social-share > a:visited,
+.social-share > a:hover,
+.social-share > a:active {
     margin-right: 15px;
+    text-decoration: none;
 }
 
 .social-share > a:last-child {
