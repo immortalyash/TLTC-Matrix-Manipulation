@@ -1,5 +1,3 @@
-import copy
-
 from wtforms import Form, FieldList, IntegerField, RadioField, StringField, validators, ValidationError
 
 from matrix.constants.constants import OPERATORS, OPERATORS_BOTH_MATRIX_REQUIREMENT

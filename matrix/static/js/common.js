@@ -47,9 +47,9 @@ function checkData(dataList) {
 
 /**
  * Method to validate context fields
- * @param context Object
- * @param data Object
- * @param validate Object
+ * @param context {object}
+ * @param data {object}
+ * @param validate {object}
  * #returns {boolean, dict}
  */
 function validateFields(context, data, validate) {
@@ -76,7 +76,7 @@ function validateFields(context, data, validate) {
                     errors.push(_keys[_k] + ": Please select a valid operation.");
                     validation = false;
                 }
-            } else if (_keys[_k] !== "csrf_token") {
+            } else {
 
                 if (data[_keys[_k]] === "") {
                     errors.push(_keys[_k] + ": This field is required.");
@@ -136,14 +136,15 @@ function validateFields(context, data, validate) {
 
 /**
  * Default ajax request maker for GET/POST
- * @param url String (Optional. Default: current url)
- * @param type String (Optional. Default: GET)
- * @param data Object (Optional. Default: {})
- * @param dataType String (Optional. Default: json)
- * @param successFunction Function
- * @param errorFunction Function (Optional. Default: alert)
+ * @param url {string} (Optional. Default: current url)
+ * @param type {string} (Optional. Default: GET)
+ * @param data {object} (Optional. Default: {})
+ * @param dataType {string} (Optional. Default: json)
+ * @param successFunction {function}
+ * @param errorFunction {function} (Optional. Default: alert)
+ * @param csrf_token {string} (Optional. Default: null)
  */
-function sendAjaxRequest(url, type, data, dataType, successFunction, errorFunction) {
+function sendAjaxRequest(url, type, data, dataType, successFunction, errorFunction, csrf_token) {
     if (url === null) {
         url = '';
     }
@@ -166,6 +167,16 @@ function sendAjaxRequest(url, type, data, dataType, successFunction, errorFuncti
         };
     }
 
+    if (csrf_token === null && type === "POST") {
+        alert("CSRF token missing");
+    }
+
+    function before(xhr, settings) {
+        if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrf_token);
+        }
+    }
+
     $.ajax({
         url: url,
         type: type,
@@ -173,6 +184,7 @@ function sendAjaxRequest(url, type, data, dataType, successFunction, errorFuncti
         dataType: dataType,
         contentType: "application/json",
         processData: false,
+        beforeSend: before,
         success: successFunction,
         error: errorFunction
     })
