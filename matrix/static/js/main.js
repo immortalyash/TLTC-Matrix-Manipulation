@@ -1,7 +1,7 @@
 /**
  * Method to check if element exist in array
- * @param arr Array
- * @param _elem String
+ * @param arr {Array}
+ * @param _elem {string}
  */
 function existElement(arr, _elem) {
     for (var _index in arr) {

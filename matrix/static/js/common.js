@@ -47,9 +47,9 @@ function checkData(dataList) {
 
 /**
  * Method to validate context fields
- * @param context Object
- * @param data Object
- * @param validate Object
+ * @param context {object}
+ * @param data {object}
+ * @param validate {object}
  * #returns {boolean, dict}
  */
 function validateFields(context, data, validate) {
@@ -136,12 +136,13 @@ function validateFields(context, data, validate) {
 
 /**
  * Default ajax request maker for GET/POST
- * @param url String (Optional. Default: current url)
- * @param type String (Optional. Default: GET)
- * @param data Object (Optional. Default: {})
- * @param dataType String (Optional. Default: json)
- * @param successFunction Function
- * @param errorFunction Function (Optional. Default: alert)
+ * @param url {string} (Optional. Default: current url)
+ * @param type {string} (Optional. Default: GET)
+ * @param data {object} (Optional. Default: {})
+ * @param dataType {string} (Optional. Default: json)
+ * @param successFunction {function}
+ * @param errorFunction {function} (Optional. Default: alert)
+ * @param csrf_token {string} (Optional. Default: null)
  */
 function sendAjaxRequest(url, type, data, dataType, successFunction, errorFunction, csrf_token) {
     if (url === null) {
