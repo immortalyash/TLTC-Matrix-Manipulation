@@ -74,9 +74,11 @@ def operate_matrix():
         _index = 0
 
         for _d in _data:
-            _key = "%s-%d" % (_prefix, _index)
-            _result.append([_key, _d])
-            _index += 1
+            # Remove None/null data
+            if _d:
+                _key = "%s-%d" % (_prefix, _index)
+                _result.append([_key, _d])
+                _index += 1
 
         return _result
 
