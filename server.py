@@ -31,7 +31,6 @@ def home():
 
 
 @app.route('/operate/', methods=["POST"])
-@csrf.exempt
 def operate_matrix():
     """
     Method to handle POST request to handle matrix manipulation

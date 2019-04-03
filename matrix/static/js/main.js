@@ -94,7 +94,6 @@ function calculate(context) {
         "matrix_2": matrix_b,
         "matrix_2_param": matrix_b_params,
         "operator": operator,
-        "x-csrf": csrf_token
     };
 
     // Set validation fields
@@ -104,7 +103,6 @@ function calculate(context) {
         "matrix_2": false,
         "matrix_2_param": false,
         "operator": true,
-        "csrf_token": true
     };
 
     // Add validation for matrix 2
@@ -139,5 +137,5 @@ function calculate(context) {
     }
 
     // Send AJAX request
-    sendAjaxRequest(url, "POST", data, null, succesFunction, null);
+    sendAjaxRequest(url, "POST", data, null, succesFunction, null, csrf_token);
 }

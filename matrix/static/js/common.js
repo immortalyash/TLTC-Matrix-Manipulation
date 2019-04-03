@@ -76,7 +76,7 @@ function validateFields(context, data, validate) {
                     errors.push(_keys[_k] + ": Please select a valid operation.");
                     validation = false;
                 }
-            } else if (_keys[_k] !== "csrf_token") {
+            } else {
 
                 if (data[_keys[_k]] === "") {
                     errors.push(_keys[_k] + ": This field is required.");
@@ -143,7 +143,7 @@ function validateFields(context, data, validate) {
  * @param successFunction Function
  * @param errorFunction Function (Optional. Default: alert)
  */
-function sendAjaxRequest(url, type, data, dataType, successFunction, errorFunction) {
+function sendAjaxRequest(url, type, data, dataType, successFunction, errorFunction, csrf_token) {
     if (url === null) {
         url = '';
     }
@@ -166,6 +166,16 @@ function sendAjaxRequest(url, type, data, dataType, successFunction, errorFuncti
         };
     }
 
+    if (csrf_token === null && type === "POST") {
+        alert("CSRF token missing");
+    }
+
+    function before(xhr, settings) {
+        if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrf_token);
+        }
+    }
+
     $.ajax({
         url: url,
         type: type,
@@ -173,6 +183,7 @@ function sendAjaxRequest(url, type, data, dataType, successFunction, errorFuncti
         dataType: dataType,
         contentType: "application/json",
         processData: false,
+        beforeSend: before,
         success: successFunction,
         error: errorFunction
     })
