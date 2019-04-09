@@ -1,6 +1,10 @@
 Getting Started
 =
 
+**Important Links -** 
+* Docker Hub - https://hub.docker.com/r/yashballani/matrix
+* GitHub - https://github.com/immortalyash/TLTC-Matrix-Manipulation/
+
 # Using Docker (Recommended)
 ### For Windows 10
 Installation of docker is out of scope for this application but you can follow the link below to install it.
