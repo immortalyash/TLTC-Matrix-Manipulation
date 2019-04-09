@@ -4,7 +4,7 @@ Getting Started
 # Using Docker (Recommended)
 ### For Windows 10
 Installation of docker is out of scope for this application but you can follow the link below to install it.
-[Click here] (https://docs.docker.com/docker-for-windows/install/) for the guide.
+[Click here](https://docs.docker.com/docker-for-windows/install/) for the guide.
 
 **Note-** You need to use Linux container (once docker is installed) in docker to allow successful deployment of the 
 application.
