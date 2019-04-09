@@ -2,13 +2,33 @@ Getting Started
 =
 
 # Using Docker (Recommended)
-## For Linux (Debian based) only
+### For Windows 10
+Installation of docker is out of scope for this application but you can follow the link below to install it.
+[Click here](https://docs.docker.com/docker-for-windows/install/) for the guide.
+
+**Note-** You need to use Linux container (once docker is installed) in docker to allow successful deployment of the 
+application.
+
+#### Use docker image from docker hub
+Pull docker image from docker hub, open linux container in docker to use the following commands
+```
+docker pull yashballani/matrix:latest
+```
+
+Run docker image
+```
+docker run -d -p 80:80 yashballani/matrix
+``` 
+
+**Access Website:** Open web browser and visit http://localhost
+
+### For Linux (Debian based) only
 Install Docker
 ```
 sudo snap install docker
 ```
 
-### Method 1: Use docker image from docker hub
+#### Method 1: Use docker image from docker hub
 Pull docker image from docker hub
 ```
 sudo docker pull yashballani/matrix:latest
@@ -21,7 +41,7 @@ sudo docker run -d -p 80:80 yashballani/matrix
 
 **Access Website:** Open web browser and visit http://localhost
 
-### Method 2: Alternate Method (Build from source)
+#### Method 2: Alternate Method (Build from source)
 Install Git
 ```
 sudo apt install git -y
@@ -45,8 +65,8 @@ sudo docker run -d -p 80:80 matrix
 **Access Website:** Open web browser and visit http://localhost
 
 # Using Virtual Environment
-## For Linux (Debian based) only 
-### Install Dependencies
+### For Linux (Debian based) only 
+#### Install Dependencies
 Core dependencies
 ```
 sudo apt-get -y install build-essential python3-dev python3-pip
@@ -72,7 +92,7 @@ App Dependencies
 pip install -r requirements.txt
 ```
 
-### Running Server
+#### Running Server
 ```
 FLASK_APP=server.py flask run
 ```
